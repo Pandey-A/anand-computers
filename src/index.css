@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "Product Sans";
+  src: url("/product sans full-1/ProductSans-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans";
+  src: url("/product sans full-1/ProductSans-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans";
+  src: url("/product sans full-1/ProductSans-Black.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans";
+  src: url("/product sans full-1/ProductSans-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans";
+  src: url("/product sans full-1/ProductSans-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/urbanist-font-family/Urbanist-Light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/urbanist-font-family/Urbanist-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/urbanist-font-family/Urbanist-Medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/urbanist-font-family/Urbanist-SemiBold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 202 94% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 27% 96%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 213 40% 96%;
+    --muted-foreground: 0 0% 33%;
+    --accent: 198 85% 92%;
+    --accent-foreground: 207 80% 33%;
+    --destructive: 0 72% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 40 12% 88%;
+    --input: 215 24% 90%;
+    --ring: 202 94% 52%;
+    --radius: 1rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Brand palette */
+    --brand-lime: 66 87% 66%;
+    --brand-lime-hover: 66 77% 61%;
+    --brand-ink: 93 23% 9%;
+    --brand-leaf: 131 47% 33%;
+    --brand-leaf-soft: 120 35% 93%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    @apply bg-page text-foreground;
+    min-width: 320px;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  button,
+  a {
+    font: inherit;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--brand-leaf));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* Floating rounded section panel sitting on the grey page */
+  .panel {
+    @apply mx-3 overflow-hidden rounded-[20px] bg-white sm:mx-6;
+  }
+
+  .panel-inner {
+    @apply mx-auto w-full max-w-[1240px] px-5 py-[clamp(56px,7vw,96px)] sm:px-10;
+  }
+
+  .eyebrow {
+    @apply block text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground;
+  }
+
+  .section-title {
+    @apply m-0 font-display text-[clamp(32px,3.6vw,48px)] font-normal leading-[1.1] tracking-[-0.02em] text-foreground;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-7 text-sm font-medium uppercase tracking-[0.12em] no-underline transition-[transform,background-color,border-color] duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-lime text-black hover:bg-brand-lime-hover;
+  }
+
+  .btn-dark {
+    @apply btn bg-night text-white hover:bg-black;
+  }
+
+  .btn-outline {
+    @apply btn border border-black/15 bg-white text-black hover:border-black/40;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-3 z-[100] -translate-y-20 rounded-lg bg-night px-5 py-3 text-sm font-medium text-white transition-transform focus:translate-y-0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
